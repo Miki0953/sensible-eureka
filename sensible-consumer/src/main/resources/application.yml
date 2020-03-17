@@ -1,0 +1,27 @@
+server:
+  port: 8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    fetch-registry: true
+    registry-fetch-interval-seconds: 30
+spring:
+  application:
+    name: consumer-service
+# 配置负载均衡策略
+# 服务名称
+sensible-service:
+  # 负载均衡器
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+# 全局配置服务调用超时时长，超过则启用降级逻辑
+hystrix:
+  command:
+    # 默认所有
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000

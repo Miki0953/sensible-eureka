@@ -1,0 +1,15 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: sensible-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+  instance:
+    prefer-ip-address: true
+    # 续约间隔时间
+    lease-renewal-interval-in-seconds: 60
+    # 续约到期时间
+    lease-expiration-duration-in-seconds: 90
